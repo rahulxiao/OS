@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Exam Q&A Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black min-h-screen text-white">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-2xl font-light text-center mb-12 text-gray-300">OS Q&A</h1>
+        
+        <div class="mb-8">
+            <select id="topicSelect" class="w-full bg-gray-900 border border-gray-800 px-4 py-3 text-white focus:outline-none focus:border-gray-600">
+                <option value="">Select a topic</option>
+                <option value="domain">Domain & Access Matrix</option>
+                <option value="mutex">Mutex & Semaphores</option>
+                <option value="critical">Critical-Section & Peterson</option>
+                <option value="security">Four-Layered Security</option>
+                <option value="program">Program Threats</option>
+                <option value="classification">Problem Classification (CIA)</option>
+                <option value="deadlock">Deadlocks & Banker's Algorithm</option>
+            </select>
+        </div>
+
+        <div id="qaContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
