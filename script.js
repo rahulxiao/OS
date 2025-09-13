@@ -66,6 +66,10 @@ const qaData = {
             answer: "Mutual Exclusion – Resources cannot be shared.\nHold & Wait – Process holds at least one resource while requesting others.\nNo Preemption – Resources cannot be forcibly taken.\nCircular Wait – Processes form a circular chain of waiting."
         },
         {
+            question: "Four Necessary Conditions for Deadlock (Detailed)",
+            answer: "Mutual Exclusion\nAt least one resource must be non-shareable. Only one process can use the resource at a time.\nExample: A printer can be used by only one process at a time.\n\nHold and Wait\nA process is holding at least one resource and is waiting to acquire additional resources that are currently held by other processes.\nExample: Process P1 holds a printer and waits for a scanner held by P2.\n\nNo Preemption\nResources cannot be forcibly taken from a process. They must be released voluntarily.\nExample: Memory allocated to a process cannot be taken away until the process releases it.\n\nCircular Wait\nThere exists a set of processes {P1, P2, …, Pn} such that each process is waiting for a resource held by the next process in the set, forming a circle.\nExample: P1 → P2 → P3 → P1 (cycle of waiting)."
+        },
+        {
             question: "Deadlock Handling Methods:",
             answer: "Prevention: Prevent at least one necessary condition.\nAvoidance: Allocate resources carefully (Banker's Algorithm).\nDetection & Recovery: Detect deadlock, abort process or preempt resources.\nIgnore: \"Ostrich Algorithm\" for simple OS."
         },
