@@ -40,6 +40,9 @@
                 <option value="program">Program Threats</option>
                 <option value="classification">Problem Classification (CIA)</option>
                 <option value="deadlock">Deadlocks & Banker's Algorithm</option>
+                <option value="memory">Memory Management</option>
+                <option value="coding">Coding</option>
+                <option value="shell">Shell Coding</option>
             </select>
         </div>
 
@@ -47,6 +50,46 @@
     </div>
 
     <script src="script.js"></script>
+    <!-- Syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script>
+        // Initialize highlighting on load and on content updates
+        function initHighlighting() {
+            document.querySelectorAll('pre code').forEach((el) => {
+                if (window.hljs) { window.hljs.highlightElement(el); }
+            });
+        }
+        // Copy buttons
+        function initCopyButtons() {
+            document.querySelectorAll('button.copy-btn').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-target');
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    const text = el.textContent;
+                    navigator.clipboard.writeText(text).then(() => {
+                        const prev = btn.textContent;
+                        btn.textContent = 'Copied!';
+                        setTimeout(() => { btn.textContent = prev; }, 1200);
+                    });
+                });
+            });
+        }
+        // Hook into displayQA to re-run highlighting/copy binding after re-render
+        const _displayQA = window.displayQA;
+        window.displayQA = function(topic) {
+            _displayQA(topic);
+            initHighlighting();
+            initCopyButtons();
+        };
+        // Also run on initial placeholder render (no code there but safe)
+        window.addEventListener('load', () => {
+            initHighlighting();
+            initCopyButtons();
+        });
+    </script>
     <script>
         (function() {
             const body = document.body;
