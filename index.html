@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OS Exam Q&A Viewer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Light mode overrides */
+        body.light-mode { background-color: #E8DFCA; color: #111827; }
+        body.light-mode .text-white { color: #111827 !important; }
+        body.light-mode .text-gray-300 { color: #374151 !important; }
+        body.light-mode .text-gray-400 { color: #374151 !important; }
+        body.light-mode .text-gray-500 { color: #6b7280 !important; }
+        body.light-mode .bg-gray-900 { background-color: #E8DFCA !important; }
+        body.light-mode .border-gray-800 { border-color: #d1d5db !important; }
+        body.light-mode .border-gray-600 { border-color: #d1d5db !important; }
+        body.light-mode #topicSelect { background-color: #E8DFCA !important; color: #111827 !important; border-color: #d1d5db !important; }
+        body.light-mode .border-gray-800 { border-color: #e5e7eb !important; }
+        body.light-mode .border-gray-600 { border-color: #e5e7eb !important; }
+    </style>
 </head>
 <body class="bg-black min-h-screen text-white">
     <div class="max-w-4xl mx-auto px-6 py-12">
-        <h1 class="text-2xl font-light text-center mb-12 text-gray-300">OS Q&A</h1>
+        <div class="flex items-center justify-between mb-12">
+            <h1 class="text-2xl font-light text-gray-300">OS Q&A</h1>
+            <label class="flex items-center gap-2 text-gray-300 cursor-pointer select-none">
+                <input id="themeToggle" type="checkbox" class="h-4 w-4">
+                <span class="text-sm">Light mode</span>
+            </label>
+        </div>
         
         <div class="mb-8">
             <select id="topicSelect" class="w-full bg-gray-900 border border-gray-800 px-4 py-3 text-white focus:outline-none focus:border-gray-600">
@@ -27,5 +47,27 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        (function() {
+            const body = document.body;
+            const toggle = document.getElementById('themeToggle');
+            const saved = localStorage.getItem('theme') || 'dark';
+            if (saved === 'light') {
+                body.classList.add('light-mode');
+                if (toggle) toggle.checked = true;
+            }
+            if (toggle) {
+                toggle.addEventListener('change', function() {
+                    if (this.checked) {
+                        body.classList.add('light-mode');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.remove('light-mode');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
