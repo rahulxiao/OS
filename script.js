@@ -12,7 +12,11 @@ const qaData = {
         {
             question: "Difference between Domain and Access Matrix:",
             answer: "Feature | Domain | Access Matrix\nScope | Single process | All processes in the system\nPurpose | Defines access rights for a process | Shows all rights of all processes\nForm | Set of (object, rights) pairs | Table of subjects × objects\n\nExplanation:\nDomain: Think of it as the \"personal access list\" for a single process.\nAccess Matrix: Think of it as the \"master chart\" of the system, showing who can do what for all processes and resources."
-        }
+			},
+			{
+				question: "Explain the Modified Access Matrix and domain rights",
+				answer: "A Modified Access Matrix is an extension of the access matrix model in operating systems where domains are also treated as objects. This allows representation of domain switching rights in addition to normal operations on files and devices.\n\nRows → Domains (subjects)\nColumns → Objects (files, printer, etc.) + Domains\nCell[i, j] → Rights of domain i over object/domain j\n\nDomain | F1 | F2 | F3 | Printer | D1 | D2 | D3 | D4\nD1 | read | — | read | — | — | switch | — | —\nD2 | — | — | — | print | — | — | switch | switch control\nD3 | — | read | execute | — | — | — | — | —\nD4 | write | — | write | — | switch | — | — | —\n\nInterpretation of the table:\n- D1 can read F1, read F3, and switch to D2.\n- D2 can print on the printer, switch to D3, and has switch control over D4.\n- D3 can read F2 and execute F3.\n- D4 can write to F1, write to F3, and switch to D1.\n\nConclusion:\nThis Modified Access Matrix shows how processes in different domains have specific access rights to objects, and how domain switching gives flexibility by letting a process move into another domain with different rights."
+			}
     ],
     mutex: [
         {
